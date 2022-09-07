@@ -14,8 +14,10 @@ class CreateInstallmentsTable extends Migration
     public function up()
     {
         Schema::create('installments', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->id('installment_id');
+            $table->unsignedBigInteger('service_ref_id');
+            $table->string('details');
+            $table->timestampsTz();
         });
     }
 

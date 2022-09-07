@@ -14,8 +14,14 @@ class CreateCustomServicesTable extends Migration
     public function up()
     {
         Schema::create('customServices', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->id('custom_service_id');
+            $table->unsignedBigInteger('service_ref_id');
+            $table->unsignedBigInteger('customer_ref_id');
+            $table->string('details');
+            $table->string('cost');
+            $table->string('installment_details');
+            $table->boolean('is_used')->default(0);
+            $table->timestampsTz();
         });
     }
 
