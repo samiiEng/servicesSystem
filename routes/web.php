@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,5 +27,7 @@ Route::get('login', [AuthController::class, 'loginForm']);
 Route::post('login', [AuthController::class, 'login']);
 Route::post('logout', [AuthController::class, 'logout']);
 
-//
+//dashboard/define or get service/ define installments/ define categories
+Route::get('categories', [AdminController::class, 'defineCategories']);
+Route::post('categories', [AdminController::class, 'storeCategories']);
 Route::get('dashboard', [ProfileController::class, 'dashboard']);

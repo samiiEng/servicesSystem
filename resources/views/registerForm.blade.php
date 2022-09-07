@@ -1,3 +1,4 @@
+@extends('Layouts.master')
 @yield('title', 'register-form')
 @section('content')
     @parent

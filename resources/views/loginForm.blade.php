@@ -1,3 +1,4 @@
+@extends('Layouts.master')
 @yield('title', 'login-form')
 @section('content')
     @parent

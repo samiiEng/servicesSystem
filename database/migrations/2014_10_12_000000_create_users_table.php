@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('image_path');
             $table->string('id_card_path');
             $table->string('email')->unique();
+            $table->boolean('is_admin')->default(0);
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestampsTz();
