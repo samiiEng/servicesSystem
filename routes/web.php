@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\InstallmentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,3 +33,8 @@ Route::post('logout', [AuthController::class, 'logout']);
 Route::get('categories', [AdminController::class, 'defineCategories']);
 Route::post('categories', [AdminController::class, 'storeCategories']);
 Route::get('dashboard', [ProfileController::class, 'dashboard']);
+Route::get('defineInstallment', [InstallmentController::class, 'defineInstallment']);
+Route::post('storeInstallment', [InstallmentController::class, 'storeInstallment']);
+Route::get('defineService', [ServiceController::class, 'defineService']);
+Route::post('storeService', [ServiceController::class, 'storeService']);
+
