@@ -15,6 +15,9 @@
     </table>
 
     <form action="{{route('storeInstallment')}}" method="post">
+        <label for="name">name: </label>
+        <input type="text" name="name" id="name">
+
         <label for="serviceID">serviceID: </label>
         <input type="number" name="serviceID" id="serviceID">
 

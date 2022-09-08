@@ -15,7 +15,8 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id('order_id');
-            $table->unsignedBigInteger('service_ref_id')->comment('if custom services is_used field is not null then this field would be filled with that otherwise would be filled with services table records.');
+            $table->unsignedBigInteger('service_ref_id');
+            $table->unsignedBigInteger('custom_service_ref_id')->default(null);
             $table->boolean('is_cash');
             $table->timestampsTz();
         });

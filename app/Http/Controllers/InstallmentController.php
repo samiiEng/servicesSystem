@@ -23,11 +23,13 @@ class InstallmentController extends Controller
     public function storeInstallment(Request $request)
     {
         $validated = $this->validate($request, [
+            "name" => $request['name'],
             "serviceID" => $request['serviceID'],
             "details" => $request['details'],
         ]);
 
         Installment::create([
+            "name" => $validated['name'],
             "service_ref_id" => $validated['serviceID'],
             "details" => $validated['details']
         ]);
