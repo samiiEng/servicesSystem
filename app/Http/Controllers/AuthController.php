@@ -36,13 +36,14 @@ class AuthController extends Controller
         $imagePath = "http://localhost/servicesSystem/public/uploads/" . basename($_FILES["imagePath"]["name"]);
         $idCardPath= "http://localhost/servicesSystem/public/uploads/" . basename($_FILES["idCardPath"]["name"]);
 
-        $file=$request->File(basename($_FILES["idCardPath"]["name"]));
-        $file = $file->storeAs('YourPathInPublic', 'YourFileName', [
-            'disk' => 'YourDiskName'
-        ]);
 
-        /*Storage::disk('YourDiskName')->put(basename($_FILES["imagePath"]["name"]), 'image');
-        Storage::disk('YourDiskName')->put(basename($_FILES["idCardPath"]["name"]), 'image');*/
+        $image = $request->file('imagePath');
+        $idCard = $request->file('idCardPath');
+        $fileImage = $image->getClientOriginalName();
+        $fileIdCard = $idCard->getClientOriginalName();
+
+        Storage::disk('YourDiskName')->put($fileImage, file_get_contents($image));
+        Storage::disk('YourDiskName')->put($fileIdCard, file_get_contents($idCard));
 
         User::create([
             "first_name" => $validated['firstName'],
