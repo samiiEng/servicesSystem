@@ -15,9 +15,9 @@ class CreateCustomServicesTable extends Migration
     {
         Schema::create('customServices', function (Blueprint $table) {
             $table->id('custom_service_id');
-            $table->unsignedBigInteger('service_ref_id');
+            $table->unsignedBigInteger('server_ref_id');
             $table->unsignedBigInteger('customer_ref_id');
-            $table->string('details');
+            $table->string('details')->comment('If there is more details to add.');
             $table->string('cost');
             $table->string('installment_details');
             $table->boolean('is_used')->default(0);

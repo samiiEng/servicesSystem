@@ -1,18 +1,28 @@
 @extends('Layouts.master')
 @yield('title', 'define-custom-service')
 @section('content')
+
+
+
+
+
     <form action="{{route('defineCustomService')}}" method="post">
         @csrf
-        <label for=""></label>
-        <input type="text">
 
+        <label for="serverID">serverID: </label>
+        <input type="number" name="serverID" id="serverID">
 
-        <label for=""></label>
-        <input type="text">
+        <label for="customerID">customerID: </label>
+        <input type="number" name="customerID" id="customerID">
 
+        <label for="details">details: </label>
+        <input type="text" name="details" id="details">
 
-        <label for=""></label>
-        <input type="text">
+        <label for="cost">cost: </label>
+        <input type="text" name="cost" id="cost">
+
+        <label for="installment">installment: </label>
+        <input type="text" name="installment" id="installment">
 
         <input type="submit" name="submit" id="submit" value="submit">
     </form>
