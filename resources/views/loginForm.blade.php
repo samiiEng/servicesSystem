@@ -1,5 +1,7 @@
 @extends('Layouts.master')
-@yield('title', 'login-form')
+@section('title')
+    login-form
+@endsection
 @section('content')
     @parent
     <form action="{{route('login')}}" method="post">

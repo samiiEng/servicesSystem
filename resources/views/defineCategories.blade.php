@@ -1,5 +1,7 @@
 @extends('Layouts.master')
-@yield('title', 'define-categories')
+@section('title')
+    define-categories
+@endsection
 @section('content')
     @parent
 

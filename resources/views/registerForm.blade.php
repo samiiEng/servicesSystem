@@ -1,5 +1,7 @@
 @extends('Layouts.master')
-@yield('title', 'register-form')
+@section('title')
+    register-form
+@endsection
 @section('content')
     @parent
     <form action="{{route('register')}}" method="post">

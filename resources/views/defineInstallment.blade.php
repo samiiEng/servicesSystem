@@ -1,5 +1,7 @@
 @extends('Layouts.master')
-@yield('title', 'define-installment')
+@section('title')
+    define-installment
+@endsection
 @section('content')
     <table>
         <tr>

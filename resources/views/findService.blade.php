@@ -1,5 +1,7 @@
 @extends('Layouts.master')
-@yield('title', 'find-service')
+@section('title')
+    find-service
+@endsection
 @section('content')
 
     <div class="filters">

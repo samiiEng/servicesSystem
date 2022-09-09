@@ -1,5 +1,7 @@
 @extends('Layouts.master')
-@yield('title', 'define-services')
+@section('title')
+    define-services
+@endsection
 @section('content')
     @parent
     <table>
