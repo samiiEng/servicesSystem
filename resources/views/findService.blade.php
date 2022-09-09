@@ -3,7 +3,7 @@
     find-service
 @endsection
 @section('content')
-
+{{print_r($finalCategories)}}
     <div class="filters">
         <form action="{{route('findServiceResult')}}" method="post">
             @csrf
@@ -12,12 +12,12 @@
                     <?php $i = true;?>
                     @foreach($category as $value)
                         @if($i)
-                            <input type="radio" name="radio" id="radio" value="{{$value['name']}}">
+                                {{$value->name}}
                             <br><br>
                             <?php $i = false;?>
                         @endif
                         <ul>
-                            <input type="radio" name="radio" id="radio" value="{{$value['name']}}">
+                            {{$value->name}}: <input type="radio" name="radio" value="{{$value->name}}">
                             <br><br>
                         </ul>
                     @endforeach

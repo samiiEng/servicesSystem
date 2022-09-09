@@ -42,7 +42,7 @@ class ServiceController extends Controller
         $categories = Category::all();
         $parents = [];
         foreach ($categories as $category) {
-            if (!$category['parent_ref_id'])
+            if (!$category->parent_ref_id)
                 $parents[] = $category;
         }
 
@@ -50,11 +50,11 @@ class ServiceController extends Controller
             $i = true;
             foreach ($categories as $category) {
                 if ($i) {
-                    $finalCategories[$parent['parent_ref_id']][] = $parent;
+                    $finalCategories[$parent->parent_ref_id][] = $parent;
                     $i = false;
                 }
-                if ($category['parent_ref_id'] == $parent['parent_ref_id'])
-                    $finalCategories[$parent['parent_ref_id']][] = $category;
+                if ($category->parent_ref_id == $parent->parent_ref_id)
+                    $finalCategories[$parent->parent_ref_id][] = $category;
             }
         }
 
