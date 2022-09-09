@@ -40,6 +40,7 @@ class ServiceController extends Controller
     public function findService()
     {
         $categories = Category::all();
+        $finalCategories = [];
         $parents = [];
         foreach ($categories as $category) {
             if (!$category->parent_ref_id)

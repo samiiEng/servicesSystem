@@ -3,7 +3,7 @@
     find-service
 @endsection
 @section('content')
-{{print_r($finalCategories)}}
+
     <div class="filters">
         <form action="{{route('findServiceResult')}}" method="post">
             @csrf
@@ -12,14 +12,15 @@
                     <?php $i = true;?>
                     @foreach($category as $value)
                         @if($i)
-                                {{$value->name}}
+                            {{$value->name}}
                             <br><br>
                             <?php $i = false;?>
+                        @else
+                            <ul>
+                                {{$value->name}}: <input type="radio" name="radio" value="{{$value->name}}">
+                                <br><br>
+                            </ul>
                         @endif
-                        <ul>
-                            {{$value->name}}: <input type="radio" name="radio" value="{{$value->name}}">
-                            <br><br>
-                        </ul>
                     @endforeach
                 @endforeach
             </ul>
@@ -38,7 +39,7 @@
                             $serviceName = \App\Models\Category::where("category_ref_id", $service['category_ref_id'])->get("name");
                             ?>
                             {{$serviceName['name']}}
-                                <input type="hidden" name="service" value="{{$serviceName['service_id']}}">
+                            <input type="hidden" name="service" value="{{$serviceName['service_id']}}">
                         </p>
 
                         <p>
