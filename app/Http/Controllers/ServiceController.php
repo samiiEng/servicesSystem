@@ -7,6 +7,7 @@ use App\Models\Installment;
 use App\Models\Service;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class ServiceController extends Controller
 {
@@ -39,9 +40,10 @@ class ServiceController extends Controller
 
     public function findService()
     {
-        $categories = Category::all();
+        $categories = DB::select("SELECT * FROM categories");
         $finalCategories = [];
         $parents = [];
+
         foreach ($categories as $category) {
             if (!$category->parent_ref_id)
                 $parents[] = $category;
@@ -53,9 +55,9 @@ class ServiceController extends Controller
                 if ($i) {
                     $finalCategories[$parent->parent_ref_id][] = $parent;
                     $i = false;
-                }
-                if ($category->parent_ref_id == $parent->parent_ref_id)
+                } else if ($category->parent_ref_id == $parent->category_id) {
                     $finalCategories[$parent->parent_ref_id][] = $category;
+                }
             }
         }
 

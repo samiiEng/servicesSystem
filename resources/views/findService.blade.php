@@ -18,7 +18,7 @@
                         @else
                             <ul>
                                 {{$value->name}}: <input type="radio" name="radio" value="{{$value->name}}">
-                                <br><br>
+                                <br>
                             </ul>
                         @endif
                     @endforeach
