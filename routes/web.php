@@ -29,7 +29,7 @@ Route::get('register', [AuthController::class, 'registerForm'])->name('registerF
 Route::post('register', [AuthController::class, 'register'])->name('register');
 Route::get('login', [AuthController::class, 'loginForm'])->name('loginForm');
 Route::post('login', [AuthController::class, 'login'])->name('login');
-Route::post('logout', [AuthController::class, 'logout'])->name('logout');
+Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 
 //dashboard/define or get service/ define installments/ define categories/define custom service
 Route::get('categories', [AdminController::class, 'defineCategories'])->name('defineCategories');

@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class AuthController extends Controller
 {
@@ -32,13 +33,24 @@ class AuthController extends Controller
             "email" => "required|string"
         ]);
 
+        $imagePath = "http://localhost/servicesSystem/public/uploads/" . basename($_FILES["imagePath"]["name"]);
+        $idCardPath= "http://localhost/servicesSystem/public/uploads/" . basename($_FILES["idCardPath"]["name"]);
+
+        $file=$request->File(basename($_FILES["idCardPath"]["name"]));
+        $file = $file->storeAs('YourPathInPublic', 'YourFileName', [
+            'disk' => 'YourDiskName'
+        ]);
+
+        /*Storage::disk('YourDiskName')->put(basename($_FILES["imagePath"]["name"]), 'image');
+        Storage::disk('YourDiskName')->put(basename($_FILES["idCardPath"]["name"]), 'image');*/
+
         User::create([
             "first_name" => $validated['firstName'],
             "last_name" => $validated['lastName'],
             "username" => $validated['username'],
             "password" => Hash::make($validated['password']),
-            "image_path" => $validated['imagePath'],
-            "id_card_path" => $validated['idCardPath'],
+            "image_path" => $imagePath,
+            "id_card_path" => $idCardPath,
             "email" => $validated['email']
         ]);
 

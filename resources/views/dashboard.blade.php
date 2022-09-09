@@ -5,17 +5,21 @@
 @section('content')
     @parent
     {{--  define service  --}}
-    <a href="{{route()}}">تعریف خدمت</a>
+    <a href="{{route('defineService')}}">تعریف خدمت</a>
 
     <br>
 
     {{-- define installment --}}
-    <a href="{{route()}}">تعریف اقساط</a>
+    <a href="{{route('defineInstallment')}}">تعریف اقساط</a>
     <br>
 
     {{--get service--}}
 
-    <a href="{{route()}}">دریافت خدمت</a>
+    <a href="{{route('findService')}}">دریافت خدمت</a>
+    <br>
+
+    {{--   logout --}}
+    <a href="{{route('logout')}}">Logout</a>
 
 
 @endsection

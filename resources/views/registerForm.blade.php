@@ -4,7 +4,7 @@
 @endsection
 @section('content')
     @parent
-    <form action="{{route('register')}}" method="post">
+    <form action="{{route('register')}}" method="post" enctype="multipart/form-data">
 
         @csrf
         <label for="firstName">firstName: </label>
