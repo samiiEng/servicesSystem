@@ -13,7 +13,10 @@ class PaymentController extends Controller
     {
         //Take a look if there was a custom service set for this service between the server and the client.
 
-        $customService = CustomService::where("service_ref_id", $request['service'])->where("is_used", 1)->where("customer_ref_id", Auth::id())->get();
+        $customService = CustomService::where("service_ref_id", $request['service'])->where("is_used", 0)->where("customer_ref_id", Auth::id())->get();
+
+        if (!$customService)
+            $customService = null;
 
         Order::create([
             "service_ref_id" => $request['service'],
