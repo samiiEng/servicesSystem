@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Installment;
 use App\Models\Service;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ServiceController extends Controller
 {
@@ -18,17 +19,18 @@ class ServiceController extends Controller
 
     public function storeService(Request $request)
     {
-        $validated = $this->validate($request->only(['details', 'cost', 'categoryID', 'installmentID']),
+        $validated = $this->validate($request,
             [
                 "details" => "required|string",
                 "cost" => "required|string",
-                "category_ref_id" => "required|integer",
-                "installment_ref_id" => "required|integer",
+                "categoryID" => "required|integer",
+                "installmentID" => "required|integer",
             ]);
 
         Service::create([
-            "category_id" => $validated['categoryID'],
-            "installment_id" => $validated['installmentID'],
+            "category_ref_id" => $validated['categoryID'],
+            "installment_ref_id" => $validated['installmentID'],
+            "user_ref_id" => Auth::id(),
             "cost" => $validated['cost'],
             "details" => $validated['details']
         ]);

@@ -3,9 +3,6 @@
     dashboard
 @endsection
 @section('content')
-    <?php echo "hello";
-    print_r(\Illuminate\Support\Facades\Auth::id());
-    ?>
     @parent
     {{--  define service  --}}
     <a href="{{route('defineService')}}">تعریف خدمت</a>
