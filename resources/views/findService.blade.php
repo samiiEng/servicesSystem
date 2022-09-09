@@ -8,7 +8,7 @@
         <form action="{{route('findServiceResult')}}" method="post">
             @csrf
             <ul>
-                @foreach($categories as $category)
+                @foreach($finalCategories as $category)
                     <?php $i = true;?>
                     @foreach($category as $value)
                         @if($i)

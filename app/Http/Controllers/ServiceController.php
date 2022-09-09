@@ -50,14 +50,15 @@ class ServiceController extends Controller
             $i = true;
             foreach ($categories as $category) {
                 if ($i) {
-                    $categories[$parent['parent_ref_id']][] = $parent;
+                    $finalCategories[$parent['parent_ref_id']][] = $parent;
                     $i = false;
                 }
                 if ($category['parent_ref_id'] == $parent['parent_ref_id'])
-                    $categories[$parent['parent_ref_id']][] = $category;
+                    $finalCategories[$parent['parent_ref_id']][] = $category;
             }
         }
-        return view('findService', compact('categories'));
+
+        return view('findService', compact('finalCategories'));
 
     }
 
