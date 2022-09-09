@@ -6,8 +6,8 @@
     @parent
     <form action="{{route('login')}}" method="post">
         @csrf
-        <label for="username">username: </label>
-        <input type="text" id="username" name="username"><br>
+        <label for="email">email: </label>
+        <input type="text" id="email" name="email"><br>
 
         <label for="password">password: </label>
         <input type="password" name="password" id="password"><br>

@@ -16,7 +16,7 @@ class CreateInstallmentsTable extends Migration
         Schema::create('installments', function (Blueprint $table) {
             $table->id('installment_id');
             $table->string('name');
-            $table->unsignedBigInteger('service_ref_id');
+            $table->unsignedBigInteger('user_ref_id');
             $table->string('details');
             $table->timestampsTz();
         });

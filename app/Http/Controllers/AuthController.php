@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Models\User;
+use http\Env\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -34,7 +35,7 @@ class AuthController extends Controller
         ]);
 
         $imagePath = "http://localhost/servicesSystem/public/uploads/" . basename($_FILES["imagePath"]["name"]);
-        $idCardPath= "http://localhost/servicesSystem/public/uploads/" . basename($_FILES["idCardPath"]["name"]);
+        $idCardPath = "http://localhost/servicesSystem/public/uploads/" . basename($_FILES["idCardPath"]["name"]);
 
 
         $image = $request->file('imagePath');
@@ -59,20 +60,16 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
-        $validated = $this->validate($request, [
-            "username" => "required|string",
-            "password" => "required|string"
+        $credentials = $request->validate([
+            'email' => ['required', 'email'],
+            'password' => ['required'],
         ]);
 
-        $ifAuthenticated = Auth::attempt([
-            "username" => $validated['username'],
-            "password" => $validated['password']
-        ]);
-
-        if ($ifAuthenticated) {
-            return redirect('dashboard');
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+            return redirect()->intended('dashboard');
         } else {
-            return response("Your credentials are incorrect!<br>");
+            return response("You're credentials are incorrect!<br>");
         }
 
     }
@@ -80,7 +77,7 @@ class AuthController extends Controller
     public function logout(Request $request)
     {
         Auth::logout();
-        return redirect('/');
+        return redirect('/login');
     }
 
 

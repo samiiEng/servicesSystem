@@ -29,7 +29,7 @@ class AdminController extends Controller
     {
         $validated = $this->validate($request, [
             "name" => "required|string",
-            "parentID" => "nullable|number",
+            "parentID" => "nullable|integer",
         ]);
 
         Category::create([

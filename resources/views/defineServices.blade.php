@@ -16,6 +16,7 @@
                 <td>{{$category['name']}}</td>
                 <td>{{$category['parent_ref_id']}}</td>
             </tr>
+        @endforeach
     </table>
 
     <table>
