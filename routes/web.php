@@ -31,7 +31,7 @@ Route::get('login', [AuthController::class, 'loginForm'])->name('loginForm');
 Route::post('login', [AuthController::class, 'login'])->name('login');
 Route::get('logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
 
-//dashboard/define or get service/ define installments/ define categories/define custom service
+//dashboard/define or get service/ define installments/ define categories
 Route::get('categories', [AdminController::class, 'defineCategories'])->name('defineCategories')->middleware('auth');
 Route::post('categories', [AdminController::class, 'storeCategories'])->name('storeCategories')->middleware('auth');
 Route::get('dashboard', [ProfileController::class, 'dashboard'])->name('dashboard')->middleware('auth');
@@ -41,10 +41,10 @@ Route::get('defineService', [ServiceController::class, 'defineService'])->name('
 Route::post('storeService', [ServiceController::class, 'storeService'])->name('storeService')->middleware('auth');
 Route::get('findService', [ServiceController::class, 'findService'])->name('findService')->middleware('auth');
 Route::post('findServiceResult', [ServiceController::class, 'findServiceResult'])->name('findServiceResult')->middleware('auth');
+
+
+//define custom service/order
 Route::get('defineCustomServiceForm', [CustomServiceController::class, 'defineCustomServiceForm'])->name('defineCustomServiceForm')->middleware('auth');
 Route::post('defineCustomService', [CustomServiceController::class, 'defineCustomService'])->name('defineCustomService')->middleware('auth');
-
-
-//order
 Route::post('order', [PaymentController::class, 'order'])->name('order')->middleware('auth');
 
