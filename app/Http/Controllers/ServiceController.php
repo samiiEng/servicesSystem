@@ -88,7 +88,7 @@ class ServiceController extends Controller
             }
         }
 
-        $services = Service::where("service_id", $request['serviceID'])->get();
+        $services = Service::where("category_ref_id", $request['categoryID'])->get();
         return view('findService', compact('services', 'finalCategories'));
     }
 

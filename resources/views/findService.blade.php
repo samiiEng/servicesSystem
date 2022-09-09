@@ -17,7 +17,7 @@
                             <?php $i = false;?>
                         @else
                             <ul>
-                                {{$value->name}}: <input type="radio" name="serviceID" value="{{$value->category_id}}">
+                                {{$value->name}}: <input type="radio" name="categoryID" value="{{$value->category_id}}">
                                 <br>
                             </ul>
                         @endif
@@ -28,11 +28,12 @@
         </form>
     </div>
 
-    <div class="results">
-        <form action="{{route('order')}}" method="post">
-            @csrf
-            @if(!empty($services))
-                @foreach($services as $service)
+    @if(!empty($services))
+        @foreach($services as $service)
+            <div class="results">
+                <form action="{{route('order')}}" method="post">
+                    @csrf
+
                     <div>
                         <p>
                             <?php
@@ -57,7 +58,7 @@
                             <?php
                             $installment = \App\Models\Installment::where("installment_id", $service['installment_ref_id'])->get();
                             ?>
-                                {{$installment[0]->details}}
+                            {{$installment[0]->details}}
                         </p>
 
                     </div>
@@ -69,9 +70,9 @@
                     <input type="radio" name="paymentType" value="1"><br>
 
                     <input type="submit" name="submit" id="submit" value="buy">
-        </form>
-    </div>
-    @endforeach
+                </form>
+            </div>
+        @endforeach
     @endif
 
 @endsection
