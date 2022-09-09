@@ -25,6 +25,10 @@
     <a href="{{route('findService')}}">دریافت خدمت</a>
     <br>
 
+    {{-- chatbox --}}
+    <a href="{{route('write')}}">Write message</a>
+    <br>
+
     {{--   logout --}}
     <a href="{{route('logout')}}">Logout</a>
 

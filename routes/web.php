@@ -8,6 +8,7 @@ use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\InstallmentController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\CustomServiceController;
+use App\Http\Controllers\MessageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,4 +50,6 @@ Route::post('defineCustomService', [CustomServiceController::class, 'defineCusto
 Route::post('order', [PaymentController::class, 'order'])->name('order')->middleware('auth');
 
 //chatbox
-Route::get('write', [])
+Route::get('write', [MessageController::class, 'write'])->name('write')->middleware('auth');
+Route::post('send', [MessageController::class, 'send'])->name('send')->middleware('auth');
+Route::get('read', [MessageController::class, 'read'])->name('read')->middleware('auth');
