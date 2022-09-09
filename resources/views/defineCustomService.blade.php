@@ -20,19 +20,19 @@
         @csrf
 
         <label for="serverID">serverID: </label>
-        <input type="number" name="serverID" id="serverID">
+        <input type="number" name="serverID" id="serverID"><br>
 
         <label for="customerID">customerID: </label>
-        <input type="number" name="customerID" id="customerID">
+        <input type="number" name="customerID" id="customerID"><br>
 
         <label for="details">details: </label>
-        <input type="text" name="details" id="details">
+        <input type="text" name="details" id="details"><br>
 
         <label for="cost">cost: </label>
-        <input type="text" name="cost" id="cost">
+        <input type="text" name="cost" id="cost"><br>
 
         <label for="installment">installment: </label>
-        <input type="text" name="installment" id="installment">
+        <input type="text" name="installment" id="installment"><br>
 
         <input type="submit" name="submit" id="submit" value="submit">
     </form>

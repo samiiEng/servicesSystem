@@ -34,16 +34,16 @@
     <form action="{{route('storeService')}}" method="post">
         @csrf
         <label for="categoryID">categoryID: </label>
-        <input type="number" id="categoryID" name="categoryID">
+        <input type="number" id="categoryID" name="categoryID"><br>
 
         <label for="installmentID">installmentID: </label>
-        <input type="number" id="installmentID" name="installmentID">
+        <input type="number" id="installmentID" name="installmentID"><br>
 
         <label for="cost">cost: </label>
-        <input type="text" name="cost" id="cost">
+        <input type="text" name="cost" id="cost"><br>
 
         <label for="details">details: </label>
-        <input type="text" name="details" id="details">
+        <input type="text" name="details" id="details"><br>
 
         <input type="submit" name="submit" id="submit" value="submit">
     </form>

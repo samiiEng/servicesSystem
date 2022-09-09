@@ -64,10 +64,10 @@
             @endif
 
             <label for="installment">installment: </label>
-            <input type="radio" name="paymentType" value="0">
+            <input type="radio" name="paymentType" value="0"><br>
 
             <label for="cash">cash: </label>
-            <input type="radio" name="paymentType" value="1">
+            <input type="radio" name="paymentType" value="1"><br>
 
             <input type="submit" name="submit" id="submit" value="buy">
         </form>

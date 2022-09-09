@@ -22,10 +22,10 @@
     <form action="{{route('storeCategories')}}" method="post">
         @csrf
         <label for="name">name: </label>
-        <input type="text" name="name" id="name">
+        <input type="text" name="name" id="name"><br>
 
         <label for="parentID">parent-id: </label>
-        <input type="number" name="parentID" id="parentID">
+        <input type="number" name="parentID" id="parentID"><br>
 
         <input type="submit" name="submit" id="submit" value="submit">
     </form>
