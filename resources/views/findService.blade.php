@@ -17,7 +17,7 @@
                             <?php $i = false;?>
                         @else
                             <ul>
-                                {{$value->name}}: <input type="radio" name="radio" value="{{$value->name}}">
+                                {{$value->name}}: <input type="radio" name="serviceID" value="{{$value->name}}">
                                 <br>
                             </ul>
                         @endif
@@ -36,10 +36,10 @@
                     <div>
                         <p>
                             <?php
-                            $serviceName = \App\Models\Category::where("category_ref_id", $service['category_ref_id'])->get("name");
+                            $serviceName = \App\Models\Category::where("category_id", $service['category_ref_id'])->get();
                             ?>
                             {{$serviceName['name']}}
-                            <input type="hidden" name="service" value="{{$serviceName['service_id']}}">
+                            <input type="hidden" name="service" value="{{$service['service_id']}}">
                         </p>
 
                         <p>
@@ -55,25 +55,23 @@
 
                         <p>
                             <?php
-                            $installment = \App\Models\Installment::where("installment_ref_id", $service['installment_ref_id'])->get();
+                            $installment = \App\Models\Installment::where("installment_id", $service['installment_ref_id'])->get();
                             ?>
-                            {{$installment['name']}}
+                                {{$installment['details']}}
                         </p>
 
-                        <p>{{$installment['details']}}</p>
-
                     </div>
-                @endforeach
-            @endif
 
-            <label for="installment">installment: </label>
-            <input type="radio" name="paymentType" value="0"><br>
+                    <label for="installment">installment: </label>
+                    <input type="radio" name="paymentType" value="0"><br>
 
-            <label for="cash">cash: </label>
-            <input type="radio" name="paymentType" value="1"><br>
+                    <label for="cash">cash: </label>
+                    <input type="radio" name="paymentType" value="1"><br>
 
-            <input type="submit" name="submit" id="submit" value="buy">
+                    <input type="submit" name="submit" id="submit" value="buy">
         </form>
     </div>
+    @endforeach
+    @endif
 
 @endsection
