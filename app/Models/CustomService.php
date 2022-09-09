@@ -9,4 +9,11 @@ class CustomService extends Model
 {
     use HasFactory;
     protected $table = "customServices";
+    protected $fillable = [
+        "details",
+        "cost",
+        "service_ref_id",
+        "customer_ref_id",
+        "installment_details",
+    ];
 }

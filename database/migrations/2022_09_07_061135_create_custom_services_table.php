@@ -20,7 +20,6 @@ class CreateCustomServicesTable extends Migration
             $table->string('details')->comment('If there is more details to add.');
             $table->string('cost');
             $table->string('installment_details');
-            $table->boolean('is_used')->default(0);
             $table->timestampsTz();
         });
     }

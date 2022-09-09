@@ -48,3 +48,5 @@ Route::get('defineCustomServiceForm', [CustomServiceController::class, 'defineCu
 Route::post('defineCustomService', [CustomServiceController::class, 'defineCustomService'])->name('defineCustomService')->middleware('auth');
 Route::post('order', [PaymentController::class, 'order'])->name('order')->middleware('auth');
 
+//chatbox
+Route::get('write', [])

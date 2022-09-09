@@ -6,13 +6,17 @@
 
         <table>
             <tr>
+                <th>serviceID</th>
+                <th>name</th>
                 <th>details</th>
                 <th>cost</th>
             </tr>
             @foreach($finalServices as $finalService)
                 <tr>
-                    <td>{{$finalService['details']}}</td>
-                    <td>{{$finalService['cost']}}</td>
+                    <td>{{$finalService[1]->service_id}}</td>
+                    <td>{{$finalService[0]}}</td>
+                    <td>{{$finalService[1]->details}}</td>
+                    <td>{{$finalService[1]->cost}}</td>
                 </tr>
             @endforeach
         </table>
@@ -20,9 +24,8 @@
 
     <form action="{{route('defineCustomService')}}" method="post">
         @csrf
-
-        <label for="serverID">serverID: </label>
-        <input type="number" name="serverID" id="serverID"><br>
+        <label for="serviceID">serviceID: </label>
+        <input type="number" name="serviceID" id="serviceID"><br>
 
         <label for="customerID">customerID: </label>
         <input type="number" name="customerID" id="customerID"><br>
