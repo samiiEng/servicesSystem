@@ -2,8 +2,18 @@
 @yield('title', 'define-custom-service')
 @section('content')
 
-
-
+        <table>
+            <tr>
+                <th>details</th>
+                <th>cost</th>
+            </tr>
+            @foreach($finalServices as $finalService)
+                <tr>
+                    <td>{{$finalService['details']}}</td>
+                    <td>{{$finalService['cost']}}</td>
+                </tr>
+            @endforeach
+        </table>
 
 
     <form action="{{route('defineCustomService')}}" method="post">
