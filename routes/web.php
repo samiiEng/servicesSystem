@@ -29,22 +29,22 @@ Route::get('register', [AuthController::class, 'registerForm'])->name('registerF
 Route::post('register', [AuthController::class, 'register'])->name('register');
 Route::get('login', [AuthController::class, 'loginForm'])->name('loginForm');
 Route::post('login', [AuthController::class, 'login'])->name('login');
-Route::get('logout', [AuthController::class, 'logout'])->name('logout');
+Route::get('logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
 
 //dashboard/define or get service/ define installments/ define categories/define custom service
-Route::get('categories', [AdminController::class, 'defineCategories'])->name('defineCategories');
-Route::post('categories', [AdminController::class, 'storeCategories'])->name('storeCategories');
-Route::get('dashboard', [ProfileController::class, 'dashboard'])->name('dashboard');
-Route::get('defineInstallment', [InstallmentController::class, 'defineInstallment'])->name('defineInstallment');
-Route::post('storeInstallment', [InstallmentController::class, 'storeInstallment'])->name('storeInstallment');
-Route::get('defineService', [ServiceController::class, 'defineService'])->name('defineService');
-Route::post('storeService', [ServiceController::class, 'storeService'])->name('storeService');
-Route::get('findService', [ServiceController::class, 'findService'])->name('findService');
-Route::post('findServiceResult', [ServiceController::class, 'findServiceResult'])->name('findServiceResult');
-Route::get('defineCustomServiceForm', [CustomServiceController::class, 'defineCustomServiceForm'])->name('defineCustomServiceForm');
-Route::post('defineCustomService', [CustomServiceController::class, 'defineCustomService'])->name('defineCustomService');
+Route::get('categories', [AdminController::class, 'defineCategories'])->name('defineCategories')->middleware('auth');
+Route::post('categories', [AdminController::class, 'storeCategories'])->name('storeCategories')->middleware('auth');
+Route::get('dashboard', [ProfileController::class, 'dashboard'])->name('dashboard')->middleware('auth');
+Route::get('defineInstallment', [InstallmentController::class, 'defineInstallment'])->name('defineInstallment')->middleware('auth');
+Route::post('storeInstallment', [InstallmentController::class, 'storeInstallment'])->name('storeInstallment')->middleware('auth');
+Route::get('defineService', [ServiceController::class, 'defineService'])->name('defineService')->middleware('auth');
+Route::post('storeService', [ServiceController::class, 'storeService'])->name('storeService')->middleware('auth');
+Route::get('findService', [ServiceController::class, 'findService'])->name('findService')->middleware('auth');
+Route::post('findServiceResult', [ServiceController::class, 'findServiceResult'])->name('findServiceResult')->middleware('auth');
+Route::get('defineCustomServiceForm', [CustomServiceController::class, 'defineCustomServiceForm'])->name('defineCustomServiceForm')->middleware('auth');
+Route::post('defineCustomService', [CustomServiceController::class, 'defineCustomService'])->name('defineCustomService')->middleware('auth');
 
 
 //order
-Route::post('order', [PaymentController::class, 'order'])->name('order');
+Route::post('order', [PaymentController::class, 'order'])->name('order')->middleware('auth');
 
