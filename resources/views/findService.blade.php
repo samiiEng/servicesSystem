@@ -35,32 +35,39 @@
                             <?php
                             $serviceName = \App\Models\Category::where("category_ref_id", $service['category_ref_id'])->get("name");
                             ?>
-                            {{$serviceName}}
+                            {{$serviceName['name']}}
+                                <input type="hidden" name="service" value="{{$serviceName['service_id']}}">
                         </p>
+
                         <p>
                             <?php
                             $userName = \App\Models\User::where("user_id", $service['user_ref_id'])->get();
                             ?>
                             {{$userName['first_name']}} {{$lastName['last_name']}}
                         </p>
+
                         <p>{{$service['details']}}</p>
+
                         <p>{{$service['cost']}}</p>
+
                         <p>
                             <?php
                             $installment = \App\Models\Installment::where("installment_ref_id", $service['installment_ref_id'])->get();
                             ?>
                             {{$installment['name']}}
                         </p>
+
                         <p>{{$installment['details']}}</p>
+
                     </div>
                 @endforeach
             @endif
 
             <label for="installment">installment: </label>
-            <input type="radio" name="paymentType" id="installment">
+            <input type="radio" name="paymentType" value="0">
 
             <label for="cash">cash: </label>
-            <input type="radio" name="paymentType" id="cash">
+            <input type="radio" name="paymentType" value="1">
 
             <input type="submit" name="submit" id="submit" value="buy">
         </form>
