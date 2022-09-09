@@ -15,8 +15,8 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id('order_id');
-            $table->unsignedBigInteger('service_ref_id');
-            $table->unsignedBigInteger('custom_service_ref_id')->default(null);
+            $table->unsignedBigInteger('service_ref_id')->default(0);
+            $table->unsignedBigInteger('custom_service_ref_id')->default(0);
             $table->boolean('is_cash');
             $table->timestampsTz();
         });

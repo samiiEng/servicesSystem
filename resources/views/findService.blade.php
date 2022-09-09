@@ -37,7 +37,7 @@
                     <div>
                         <p>
                             <?php
-                            $serviceName = \App\Models\Category::where("category_id", $service['category_ref_id'])->get();
+                            $serviceName = \App\Models\Category::where("category_id", $service->category_ref_id)->get();
                             ?>
                             {{$serviceName[0]->name}}
                             <input type="hidden" name="service" value="{{$service->service_id}}">
@@ -45,7 +45,7 @@
 
                         <p>
                             <?php
-                            $userName = \App\Models\User::where("user_id", $service['user_ref_id'])->get();
+                            $userName = \App\Models\User::where("user_id", $service->user_ref_id)->get();
                             ?>
                             {{$userName[0]->first_name}} {{$userName[0]->last_name}}
                         </p>
@@ -56,7 +56,7 @@
 
                         <p>
                             <?php
-                            $installment = \App\Models\Installment::where("installment_id", $service['installment_ref_id'])->get();
+                            $installment = \App\Models\Installment::where("installment_id", $service->installment_ref_id)->get();
                             ?>
                             {{$installment[0]->details}}
                         </p>

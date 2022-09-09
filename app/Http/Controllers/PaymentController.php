@@ -15,13 +15,14 @@ class PaymentController extends Controller
 
         $customService = CustomService::where("service_ref_id", $request['service'])->where("is_used", 0)->where("customer_ref_id", Auth::id())->get();
 
-        if (!$customService)
-            $customService = null;
+        if (empty($customService->items)) {
+            $customService = 0;
+        }
 
         Order::create([
             "service_ref_id" => $request['service'],
             "custom_service_ref_id" => $customService,
-            "is_cash" => $request['radio'],
+            "is_cash" => $request['paymentType'],
         ]);
 
     }
