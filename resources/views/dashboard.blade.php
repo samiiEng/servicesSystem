@@ -5,7 +5,7 @@
 @section('content')
     @parent
     {{-- define categories --}}
-    <a href="{{route('categories')}}">تعریف دسته ها</a>
+    <a href="{{route('defineCategories')}}">تعریف دسته ها</a>
     <br>
 
     {{--  define service  --}}

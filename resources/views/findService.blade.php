@@ -17,7 +17,7 @@
                             <?php $i = false;?>
                         @else
                             <ul>
-                                {{$value->name}}: <input type="radio" name="serviceID" value="{{$value->name}}">
+                                {{$value->name}}: <input type="radio" name="serviceID" value="{{$value->category_id}}">
                                 <br>
                             </ul>
                         @endif
@@ -38,26 +38,26 @@
                             <?php
                             $serviceName = \App\Models\Category::where("category_id", $service['category_ref_id'])->get();
                             ?>
-                            {{$serviceName['name']}}
-                            <input type="hidden" name="service" value="{{$service['service_id']}}">
+                            {{$serviceName[0]->name}}
+                            <input type="hidden" name="service" value="{{$service->service_id}}">
                         </p>
 
                         <p>
                             <?php
                             $userName = \App\Models\User::where("user_id", $service['user_ref_id'])->get();
                             ?>
-                            {{$userName['first_name']}} {{$lastName['last_name']}}
+                            {{$userName[0]->first_name}} {{$userName[0]->last_name}}
                         </p>
 
-                        <p>{{$service['details']}}</p>
+                        <p>{{$service->details}}</p>
 
-                        <p>{{$service['cost']}}</p>
+                        <p>{{$service->cost}}</p>
 
                         <p>
                             <?php
                             $installment = \App\Models\Installment::where("installment_id", $service['installment_ref_id'])->get();
                             ?>
-                                {{$installment['details']}}
+                                {{$installment[0]->details}}
                         </p>
 
                     </div>
